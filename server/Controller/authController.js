@@ -11,7 +11,7 @@ const oneWeekInSeconds = 7 * 24 * 60 * 60;
 // Login User
 async function loginUser(req, res) {
     const { email, password } = req.body;
-
+     console.log(password);
     if (!email || !password) {
          //400 Bad Request
         return res.status(400).json({
@@ -30,8 +30,9 @@ async function loginUser(req, res) {
                 message: "Invalid email or user does not exist",
             });
         }
-
+        
         const match = await bcrypt.compare(password, user.password);
+        console.log(match);
         if (!match) {
              //401 Unauthorized
             return res.status(401).json({

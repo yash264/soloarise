@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const bcrypt = require("bcrypt");
+ 
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -25,13 +25,7 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true,
-        minlength: 6,
-        validate: {
-            validator: function (value) {
-                return /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/.test(value);
-            },
-            message: "Password must contain at least one letter, one number, and one special character",
-        },
+        minlength: 8, // Minimum length of 8 characters
     },
     points:{
         type:Number,
@@ -66,23 +60,6 @@ const userSchema = new mongoose.Schema({
 
 userSchema.index({ username: 1, email: 1 });
 
-// Pre-save middleware to hash the password before saving
-userSchema.pre("save", async function (next) {
-    if (!this.isModified("password")) return next();
-
-    try {
-        const salt = await bcrypt.genSalt(10);
-        this.password = await bcrypt.hash(this.password, salt);
-        next();
-    } catch (error) {
-        next(error);
-    }
-});
-
-// Method to compare passwords
-userSchema.methods.comparePassword = async function (candidatePassword) {
-    return bcrypt.compare(candidatePassword, this.password);
-};
 
 // Create and export the user model
 const User = mongoose.model("User", userSchema);
