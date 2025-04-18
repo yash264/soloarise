@@ -5,7 +5,7 @@ function Alert() {
                 <span> </span>
 
                 <p className="text-center font-semibold tracking-wide text-cyan-300 drop-shadow-[0_0_8px_rgba(34,211,238,0.6)]">
-                    Try to increase your fitness.
+                    {/* Try to increase your fitness. */}
                 </p>
 
                 <button

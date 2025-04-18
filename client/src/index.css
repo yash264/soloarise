@@ -101,7 +101,26 @@ body {
     min-height: 500px;
 }
 
+/* Home screen */
+.home-screen {
+    position: relative;
+    background: url("https://images8.alphacoders.com/134/thumb-1920-1347905.png") no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 100vh;
+    width: 100%;
+    color: white;
+    z-index: 0;
+}
 
+.home-screen::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.242);
+    /* adjust the 0.6 to make it lighter/darker */
+    z-index: -1;
+}
 
 /* General */
 .solo-btn {
@@ -302,3 +321,4 @@ body {
         height: auto;
     }
 }
+
