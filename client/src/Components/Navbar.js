@@ -3,37 +3,31 @@ import fitness from "../Assets/fitness.png";
 import avatar from "../Assets/avatar.png";
 
 function Navbar() {
-
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     return (
         <>
-            <header className="bg-neutral-700 fixed top-0 w-full z-50 shadow-4xl">
+            <header className="bg-gradient-to-r from-[#0f0f1a] via-[#141421] to-[#0f0f1a] fixed top-0 w-full z-50 shadow-[0_10px_30px_rgba(0,0,0,0.9)]">
                 <div className="mx-auto flex h-16 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8">
-                    <a className="block text-teal-600" href="#">
-                        <img src={fitness} className="w-24" />
+                    <a className="block" href="#">
+                        <a href="#" className="logo-text">SoloArise</a>
                     </a>
 
                     <div className="flex flex-1 items-center justify-end md:justify-between">
-                        
                         <nav aria-label="Global" className="hidden md:block">
-                            <ul className="flex items-center gap-6 text-sm">
+                            <ul className="flex items-center gap-8 text-sm font-semibold tracking-wide">
                                 <li>
-                                    <a className="text-white transition hover:text-yellow-400" href="#"> DashBoard </a>
+                                    <a className="text-white transition duration-300 hover:text-cyan-400 hover:shadow-[0_0_12px_#22d3ee] hover:scale-105 p-2" href="#">DashBoard</a>
                                 </li>
-
                                 <li>
-                                    <a className="text-white transition hover:text-yellow-400" href="#"> WorkOut </a>
+                                    <a className="text-white transition duration-300 hover:text-cyan-400 hover:shadow-[0_0_12px_#22d3ee] hover:scale-105 p-2" href="#">WorkOut</a>
                                 </li>
-
                                 <li>
-                                    <a className="text-white transition hover:text-yellow-400" href="#"> LeaderBoard </a>
+                                    <a className="text-white transition duration-300 hover:text-cyan-400 hover:shadow-[0_0_12px_#22d3ee] hover:scale-105 p-2" href="#">LeaderBoard</a>
                                 </li>
-
                                 <li>
-                                    <a className="text-white transition hover:text-yellow-400" href="#"> Profile </a>
+                                    <a className="text-white transition duration-300 hover:text-cyan-400 hover:shadow-[0_0_12px_#22d3ee] hover:scale-105 p-2" href="#">Profile</a>
                                 </li>
-
                             </ul>
                         </nav>
 
@@ -41,13 +35,13 @@ function Navbar() {
                             <div className="sm:flex sm:gap-4">
                                 <img
                                     src={avatar}
-                                    alt="Logo"
-                                    className="w-12 h-12 rounded-full shadow-lg border-2 border-white bg-white"
+                                    alt="Avatar"
+                                    className="w-12 h-12 rounded-full border-2 border-cyan-400 shadow-lg shadow-cyan-500/30 hover:shadow-cyan-400/60 transition duration-300"
                                 />
                             </div>
 
                             <button
-                                className="block rounded-sm bg-gray-100 p-2.5 text-gray-600 transition hover:text-gray-600/75 md:hidden"
+                                className="block rounded-sm bg-[#1f1f2e] p-2.5 text-gray-300 transition hover:text-cyan-400 md:hidden"
                                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                             >
                                 <span className="sr-only">Toggle menu</span>
@@ -67,7 +61,7 @@ function Navbar() {
                 </div>
             </header>
         </>
-    )
+    );
 }
 
 export default Navbar;
