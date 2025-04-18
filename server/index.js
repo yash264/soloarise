@@ -18,8 +18,10 @@ const server = app.listen(port,()=>{
 DB();
 
 const authRouter = require('./Routes/authRoute');
+const questRouter = require('./Routes/questRoute');
 
 app.use('/api/auth', authRouter);
+app.use('/api/quest', questRouter);
 
 app.get('/healthcheck', (req, res) => {
     console.log('I am alive!!!');
