@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import avatar from "../Assets/avatar.png";
-import { Link } from "react-router-dom";
 
 function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
