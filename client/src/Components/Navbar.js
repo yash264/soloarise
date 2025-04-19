@@ -1,5 +1,5 @@
 import { useState } from "react";
-import fitness from "../Assets/fitness.png";
+import { Link } from "react-router-dom";
 import avatar from "../Assets/avatar.png";
 
 function Navbar() {
@@ -15,19 +15,25 @@ function Navbar() {
 
                     <div className="flex flex-1 items-center justify-end md:justify-between">
                         <nav aria-label="Global" className="hidden md:block">
-                            {/* <ul className="flex items-center gap-8 text-sm font-semibold tracking-wide">
+                            <ul className="flex items-center gap-8 text-sm font-semibold tracking-wide">
                                 <li>
-                                    <a className="text-white transition duration-300 hover:text-cyan-400 hover:shadow-[0_0_12px_#22d3ee] hover:scale-105 p-2" href="#">Ranking</a>
+                                    <Link className="text-white transition duration-300 hover:text-cyan-400 hover:shadow-[0_0_12px_#22d3ee] hover:scale-105 p-2" to="../hunter" >Hunter</Link>
                                 </li>
                                 <li>
-                                    <a className="text-white transition duration-300 hover:text-cyan-400 hover:shadow-[0_0_12px_#22d3ee] hover:scale-105 p-2" href="#">Profile</a>
+                                    <Link className="text-white transition duration-300 hover:text-cyan-400 hover:shadow-[0_0_12px_#22d3ee] hover:scale-105 p-2" to="../quests" >Daily Quest</Link>
                                 </li>
-                            </ul> */}
+                                <li>
+                                    <Link className="text-white transition duration-300 hover:text-cyan-400 hover:shadow-[0_0_12px_#22d3ee] hover:scale-105 p-2" to="../ranking" >Ranking</Link>
+                                </li>
+                                <li>
+                                    <Link className="text-white transition duration-300 hover:text-cyan-400 hover:shadow-[0_0_12px_#22d3ee] hover:scale-105 p-2" to="../profile" >Profile</Link>
+                                </li>
+                            </ul>
                         </nav>
 
                         <div className="flex items-center gap-4">
 
-                            
+
                             <div className="sm:flex sm:gap-4 items-center">
                                 {/* XP Bar */}
                                 <div className="flex-1 h-4 bg-gray-700 rounded-full overflow-hidden relative w-48">
