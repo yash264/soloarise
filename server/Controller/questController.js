@@ -1,5 +1,19 @@
+const axios = require("axios");
 const questModel = require('../Model/quest.model');
 const userModel = require('../Model/user.model');
+
+
+const fetch_data = async (body) => {
+    try {
+        const response = await axios.post("http://127.0.0.1:5000/predict", body);
+        
+        return response.data
+
+    } catch (error) {
+        return error;
+ 
+    }
+}
 
 async function createQuest(req, res){
     try{
@@ -19,11 +33,22 @@ async function createQuest(req, res){
             }
         }
 
+        const data = await userModel.findById(user._id);
+
+        const response = await fetch_data({
+            previous_level: data.level,
+            points: data.points
+        })
+
         const newQuest = new questModel({
             date: now,
             exercises: [
-                { type: "pushup", value: 30 },
-                { type: "squat", value: 40 }
+                {  
+                    type: response.recommendation[0].type,
+                    value: response.recommendation[0].value,
+                    practise: response.recommendation[0].exercise,
+                    tips: response.recommendation[0].tips
+                },
             ]
         });
 
@@ -40,7 +65,6 @@ async function createQuest(req, res){
             msg: "New quest created successfully",
             quest: newQuest
         });
-
 
     }
     catch(error){
