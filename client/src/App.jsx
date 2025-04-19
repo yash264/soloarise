@@ -15,8 +15,7 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={
-          <RedirectIfAuthenticated><FrontPage /></RedirectIfAuthenticated>} />
+        <Route path="/" element={<FrontPage />} />
         <Route path="/dungeon" element={
           <RedirectIfAuthenticated><Auth /></RedirectIfAuthenticated>
          } />
