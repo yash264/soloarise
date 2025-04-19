@@ -39,7 +39,7 @@ async function loginUser(req, res) {
         else {
             res.json({
                 success: false,
-                message: "Invalid username" });
+                message: "Invalid Email" });
         }
 }
 
@@ -62,7 +62,13 @@ async function register(req, res) {
                 message: "User already exists"
             });
         }
-        
+         const usernameExist = await userModel.findOne({ username: body.username });
+    if (usernameExist) {
+        return res.status(400).json({
+            success: false,
+            message: "Username is already taken",
+        });
+    }  
         const user = await userModel.create(body);
 
         res.status(201).json({
