@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
- 
+const bcrypt = require('bcrypt');
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         unique: true,
-        trim: true, // remove trailing spaces
+        trim: true,
     },
     email: {
         type: String,
@@ -19,48 +19,36 @@ const userSchema = new mongoose.Schema({
         unique: true,
         trim: true,
         lowercase: true, 
-        //regex
-        match: [/^\S+@\S+\.\S+$/, "Please provide a valid email address"], // Email validation
+        match: [/^\S+@\S+\.\S+$/, "Please provide a valid email address"],
     },
     password: {
         type: String,
         required: true,
-        minlength: 8, // Minimum length of 8 characters
+        minlength: 8,
     },
-    points:{
-        type:Number,
-         default:0,
+    points: {
+        type: Number,
+        default:0,
     },
     level: {
         type: Number,
-        default:1,
-        min: 1,
+        default: 0,
+        min: 0,
         max: 100,
     },
-    dialyQuest: [
-        {
-            exerciseId: {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: "Exercise", // referencing to Exercise model
-                required: true,
-            },
-            totalTime: {
-                type: Number, // Total time in kms(for running)
-                              //for some exercises there is count(for squats,pushups etc..)
-                required: true,
-            },
-            timeDone: {
-                type: Number, // Time completed in minutes
-                required: true,
-                default:0   //initially timedone 0
-            },
-        },
-    ],
+    quest: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'questModel'
+    }
 }, { timestamps: true });
 
-userSchema.index({ username: 1, email: 1 });
+userSchema.pre('save', async function () {
+ 
+    const salt = await bcrypt.genSalt(10);
+    const hashPass = await bcrypt.hash(this.password, salt);
+    this.password = hashPass;
+})
 
 
-// Create and export the user model
-const User = mongoose.model("User", userSchema);
-module.exports = User;
+const userModel = mongoose.model("userModel", userSchema);
+module.exports = userModel;

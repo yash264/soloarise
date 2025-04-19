@@ -6,12 +6,12 @@ import DailyTask from "../Components/DailyTask";
 
 const Home = () => {
     return (
-        <>
+        <div className="home-screen">
            <Navbar />
-           <Alert />
+           {/* <Alert /> */}
            <Section />
            <DailyTask />
-        </>
+        </div>
     )
 }
 
