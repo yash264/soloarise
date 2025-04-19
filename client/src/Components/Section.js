@@ -20,7 +20,6 @@ function Section() {
                     },
                 });
                 
-                console.log(response.data.exercises);
                 setQuest(response.data);
             } catch (err) {
                 console.log(err);
@@ -73,7 +72,15 @@ function Section() {
                             <h3 className="p-2 text-lg font-semibold text-center text-cyan-300 drop-shadow-[0_0_10px_rgba(34,211,238,0.7)]">
                                 Total Progress
                             </h3>
-                            <Card2 />
+                            {loading ? (
+                                <p className="text-sm text-gray-400 text-center mt-4">Loading...</p>
+                            ) : error ? (
+                                <p className="text-sm text-red-400 text-center mt-4">Something went wrong.</p>
+                            ) : !quest ? (
+                                <p className="text-sm text-gray-400 text-center mt-4">No quests</p>
+                            ) : (
+                                <Card2 exercises={quest.exercises} />
+                            )}
                         </div>
 
                     </div>

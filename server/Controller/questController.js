@@ -81,10 +81,8 @@ async function getQuest(req, res) {
         const user = await userModel.findById(req.user._id).populate('quest');
 
         if (!user || !user.quest) {
-            console.log("nonotnotnnto");
             return res.status(404).json({ message: "Quest not found" });
         }
-        console.log(user.quest);
 
         res.status(200).json(user.quest);
     } catch (error) {
