@@ -6,7 +6,7 @@ function Section() {
     return (
         <>
             <section className=" min-h-screen py-10">
-                <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+                <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 mt-10">
                     <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:items-start">
                         {/* <div className="bg-[#1a1a2e] rounded-xl shadow-lg shadow-cyan-500/10 p-4">
                             <Sidebar />
