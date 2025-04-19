@@ -1,9 +1,13 @@
 import Navbar from "../Components/Navbar";
+import Identity from "../Components/Identity";
 
 function Profile() {
     return (
         <>
-            <Navbar />
+            <div className="profile-screen">
+                <Navbar />
+                <Identity />
+            </div>
         </>
     )
 }
