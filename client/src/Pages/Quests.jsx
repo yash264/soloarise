@@ -1,9 +1,13 @@
 import Navbar from "../Components/Navbar";
+import Banner from "../Components/Banner";
 
 function Quests() {
     return (
         <>
-            <Navbar />
+            <div className="quest-screen">
+                <Navbar />
+                <Banner />
+            </div>
         </>
     )
 }

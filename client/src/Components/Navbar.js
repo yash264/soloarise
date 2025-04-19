@@ -16,15 +16,11 @@ function Navbar() {
                     <div className="flex flex-1 items-center justify-end md:justify-between">
                         <nav aria-label="Global" className="hidden md:block">
                             <ul className="flex items-center gap-8 text-sm font-semibold tracking-wide">
-                                <li>
-
-                                    <Link to="/" className="text-white transition duration-300 hover:text-cyan-400 hover:shadow-[0_0_12px_#22d3ee] hover:scale-105 p-2" href="#">Ranking</Link>
+                            <li>
+                                    <Link className="text-white transition duration-300 hover:text-cyan-400 hover:shadow-[0_0_12px_#22d3ee] hover:scale-105 p-2" to="../hunter" >Hunter</Link>
                                 </li>
                                 <li>
                                     <Link to="/hunter/ascension" className="text-white transition duration-300 hover:text-cyan-400 hover:shadow-[0_0_12px_#22d3ee] hover:scale-105 p-2" href="#">Level</Link>
-                                </li>
-                                 <li>
-                                    <Link className="text-white transition duration-300 hover:text-cyan-400 hover:shadow-[0_0_12px_#22d3ee] hover:scale-105 p-2" to="../hunter" >Hunter</Link>
                                 </li>
                                 <li>
                                     <Link className="text-white transition duration-300 hover:text-cyan-400 hover:shadow-[0_0_12px_#22d3ee] hover:scale-105 p-2" to="../quests" >Daily Quest</Link>
