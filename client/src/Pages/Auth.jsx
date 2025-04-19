@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState ,useContext} from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { UserContext } from '../Context/UserContext'; 
 
 export default function Auth() {
     const [login, setLogin] = useState(true);
@@ -14,7 +15,7 @@ export default function Auth() {
     });
 
     const navigate = useNavigate(); // Initialize useNavigate
-
+     const {fetchUser} = useContext(UserContext); 
     const handleChange = (e) => {
         setFormData({
             ...formData,
@@ -82,8 +83,9 @@ export default function Auth() {
                 } else {
                     // Store the token in localStorage
                     localStorage.setItem('token', data.token);
+                    localStorage.setItem('userId',data.data._id); // store userId
 
-                
+                    await fetchUser(); // Fetch user data after login
                     navigate('/hunter');
                 }
             } else {

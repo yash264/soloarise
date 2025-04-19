@@ -11,9 +11,11 @@ import Profile from './Pages/Profile';
 
 import ProtectedRoute from './Components/ProtectedRoute';
 import RedirectIfAuthenticated from './Components/RedirectIfAuthenticated';
+import { UserProvider } from './Context/UserContext';
 function App() {
   return (
     <>
+     <UserProvider>
       <Routes>
         <Route path="/" element={<FrontPage />} />
         <Route path="/dungeon" element={
@@ -26,6 +28,7 @@ function App() {
         <Route path="/ranking" element={<ProtectedRoute element={<Ranking />} />} />
         <Route path="/profile" element={<ProtectedRoute element={<Profile />} />} />
       </Routes>
+      </UserProvider>
     </>
   );
 }

@@ -1,12 +1,14 @@
 const express = require('express');
+const app = express();
+const { getUserById, updateData } = require('../Controller/userController');
 const { protect } = require('../Middleware/authMiddleware');
-const { getUserData, updateData } = require('../Controller/userController');
+const router = express.Router();
+
+app.use('/api/user', router);
+
+router.post('/update', protect, updateData);
+ 
+router.get('/:id', protect,getUserById); // Get user by ID
 
 
-const userRouter = express.Router();
-
-userRouter.route('/')
-.get(protect, getUserData)
-.post(protect, updateData)
-
-module.exports = userRouter;
+module.exports = router;
