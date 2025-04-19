@@ -16,7 +16,7 @@ function Banner({ exercise }) {
     };
 
     const counterComponents = {
-        pushUp: PushupCounter,
+        pushUps: PushupCounter,
         bicepsCurl: BicepCurlCounter,
         planks: PlankHoldTimer,
         squat: SquatCounter

@@ -1,5 +1,4 @@
 import { useState, useEffect, useContext } from "react";
-import SideBar from "./Sidebar";
 import { UserContext } from "../Context/UserContext";
 
 function LeaderBoard() {
@@ -53,15 +52,14 @@ function LeaderBoard() {
     return (
         <section className="min-h-screen py-12">
             <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 mt-12">
-                <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:items-start">
-                    <SideBar />
+                <div className="grid grid-cols-1 gap-6 md:grid-cols-1 md:items-center">
 
                     <div className="bg-[#1a1a2e] rounded-xl shadow-md shadow-purple-500/10 p-5 md:col-span-2 w-full">
                         <h3 className="p-2 text-lg font-semibold text-center text-cyan-300 drop-shadow-[0_0_8px_rgba(34,211,238,0.6)]">
                             LeaderBoard
                         </h3>
 
-                        <div className="mt-10">
+                        <div className="mt-10 ">
                             {loading ? (
                                 <div className="flex justify-center items-center py-10">
                                     <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-cyan-400"></div>
@@ -121,18 +119,18 @@ function LeaderBoard() {
                         </div>
 
                         {currentUser && (
-  <div className="text-center mt-4">
-    <button
-      onClick={() => {
-        const myPage = Math.ceil(currentUser.rank / usersPerPage);
-        setCurrentPage(myPage);
-      }}
-      className="text-xs px-3 py-1 bg-cyan-600 text-white rounded hover:bg-cyan-700 transition"
-    >
-      Jump to my rank
-    </button>
-  </div>
-)}
+                            <div className="text-center mt-4">
+                                <button
+                                    onClick={() => {
+                                        const myPage = Math.ceil(currentUser.rank / usersPerPage);
+                                        setCurrentPage(myPage);
+                                    }}
+                                    className="text-xs px-3 py-1 bg-cyan-600 text-white rounded hover:bg-cyan-700 transition"
+                                >
+                                    Jump to my rank
+                                </button>
+                            </div>
+                        )}
 
 
                         {/* Pagination Buttons */}
@@ -141,11 +139,10 @@ function LeaderBoard() {
                                 <button
                                     key={pageNum}
                                     onClick={() => setCurrentPage(pageNum)}
-                                    className={`px-4 py-2 rounded-lg ${
-                                        currentPage === pageNum
+                                    className={`px-4 py-2 rounded-lg ${currentPage === pageNum
                                             ? "bg-cyan-600 text-white"
                                             : "bg-gray-700 text-cyan-300"
-                                    }`}
+                                        }`}
                                 >
                                     {pageNum}
                                 </button>
