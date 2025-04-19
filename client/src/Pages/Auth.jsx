@@ -80,10 +80,12 @@ export default function Auth() {
                     // Redirect to login form after successful signup
                     setLogin(true);
                 } else {
-                    // Redirect to Home after successful login
+                    // Store the token in localStorage
+                    localStorage.setItem('token', data.token);
+
+                
                     navigate('/hunter');
                 }
-                console.log(login ? 'Login successful:' : 'Registration successful:', data);
             } else {
                 if (login) {
                     // Show error toast for login failures
