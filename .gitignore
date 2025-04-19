@@ -4,5 +4,7 @@
 /client/package-lock.json
 /server/package-lock.json
 
+/server/ml/venv
+
 .env
 

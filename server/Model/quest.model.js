@@ -16,6 +16,10 @@ const questSchema = new mongoose.Schema({
                 type: String,
                 required: true
             },
+            done: {
+                type: String,
+                default: "0"
+            },
             practise: {
                 type: String,
                 required: true,
@@ -25,7 +29,11 @@ const questSchema = new mongoose.Schema({
                 required: true
             }
         }
-    ]
+    ],
+    completed: {
+        type: Boolean,
+        default: false
+    }
 
 },{
     timestamps:true
