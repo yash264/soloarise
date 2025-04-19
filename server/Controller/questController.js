@@ -93,16 +93,37 @@ async function getQuest(req, res) {
     }
 }
 
-// async function updateQuest(req, res){
-//     try{
+async function updateQuest(req, res){
+    try{
+        const { date, exercises } = req.body;
+        const allDone = exercises.every(ex => {
+            const value = parseFloat(ex.value);
+            const done = parseFloat(ex.done);
+            return !isNaN(value) && !isNaN(done) && done >= value;
+        });
+
+        const updatedQuest = await questModel.findOneAndUpdate(
+            { date: date },
+            {
+                exercises,
+                completed: allDone
+            },
+            { upsert: true, new: true }
+        );
+
+        return res.status(200).json({
+            success: true,
+            message: 'Quest updated successfully',
+            data: updatedQuest
+        });
+    }
+    catch(error){
+        console.log(error);
+        res.status(500).json({
+            msg: ""+error
+        })
+    }
+}
 
 
-//     }
-//     catch(error){
-
-
-//     }
-// }
-
-
-module.exports = { createQuest, getQuest };
+module.exports = { createQuest, getQuest, updateQuest };
