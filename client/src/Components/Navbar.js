@@ -8,10 +8,11 @@ function Navbar() {
     const [level, setLevel] = useState(0);
     const [xp, setXp] = useState(0);
     const xpRequired = 1000;
+
     useEffect(() => {
         const fetchUserData = async () => {
             try {
-                const res = await axios.get("http://localhost:4000/api/user", {
+                const res = await axios.get("http://localhost:4000/api/user/", {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("token")}`,
                     },
