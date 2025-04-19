@@ -4,6 +4,8 @@ import { UserContext } from "../Context/UserContext";
 function Identity() {
     const { user, loading } = useContext(UserContext);
 
+    console.log(user,loading);
+
     if (loading) {
         return (
             <div className="flex justify-center items-center h-screen">

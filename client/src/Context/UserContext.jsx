@@ -12,7 +12,7 @@ export const UserProvider = ({ children }) => {
 
         if (token) {
             try {
-                const response = await fetch(`http://localhost:4000/api/user/`, {
+                const response = await fetch(`http://localhost:4000/api/user/getData`, {
                     method: "GET",
                     headers: {
                         Authorization: `Bearer ${token}`, // Include token in headers

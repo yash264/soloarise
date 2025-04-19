@@ -4,11 +4,11 @@ const { getUserById, updateData } = require('../Controller/userController');
 const { protect } = require('../Middleware/authMiddleware');
 const router = express.Router();
 
-app.use('/api/user', router);
+router.get('/getData', protect,  getUserById);
 
 router.post('/update', protect, updateData);
  
-router.get('/:id', protect,getUserById); // Get user by ID
+//router.get('/:id', protect,getUserById); // Get user by ID
 
 
 module.exports = router;

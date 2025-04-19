@@ -1,7 +1,6 @@
 import Navbar from "../Components/Navbar";
 import Identity from "../Components/Identity";
-import React, { useContext } from "react";
-import { UserContext } from "../Context/UserContext";
+import React from "react";
 
 function Profile() {
     return (
