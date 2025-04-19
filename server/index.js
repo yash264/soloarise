@@ -22,8 +22,8 @@ const questRouter = require('./Routes/questRoute');
 const userRouter = require('./Routes/userRoute');
 
 app.use('/api/auth', authRouter);
-app.use('/api/user', userRouter);
 app.use('/api/quest', questRouter);
+app.use('/api/user', userRouter);
 
 app.get('/healthcheck', (req, res) => {
     console.log('I am alive!!!');

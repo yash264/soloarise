@@ -5,8 +5,8 @@ const { createQuest, getQuest, updateQuest } = require('../Controller/questContr
 const questRouter = express.Router();
 
 questRouter.route('/')
-.get(protect, getQuest)
-.post(protect, createQuest)
+.get(protect, createQuest)
+// .post(protect, createQuest)
 .patch(protect, updateQuest);
 
 module.exports = questRouter;

@@ -8,12 +8,11 @@ export const UserProvider = ({ children }) => {
 
     // Function to fetch user data
     const fetchUser = async () => {
-        const userId = localStorage.getItem("userId");
         const token = localStorage.getItem("token");
 
-        if (userId && token) {
+        if (token) {
             try {
-                const response = await fetch(`http://localhost:4000/api/user/${userId}`, {
+                const response = await fetch(`http://localhost:4000/api/user/`, {
                     method: "GET",
                     headers: {
                         Authorization: `Bearer ${token}`, // Include token in headers
@@ -22,7 +21,7 @@ export const UserProvider = ({ children }) => {
 
                 const data = await response.json();
 
-                if (response.ok && data.success) {
+                if (response.ok) {
                     setUser(data.user); // Set user data
                 } else {
                     console.error("Failed to fetch user data:", data.message);

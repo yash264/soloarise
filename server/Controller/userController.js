@@ -1,10 +1,8 @@
 const userModel = require('../Model/user.model');
 
-// Get user by ID
 async function getUserById(req, res) {
     try {
-        const userId = req.params.id; // Get userId from request parameters
-        const user = await userModel.findById(userId).select('-password'); // Exclude the password field
+        const user = req.user;
 
         if (!user) {
             return res.status(404).json({
@@ -13,10 +11,7 @@ async function getUserById(req, res) {
             });
         }
 
-        res.status(200).json({
-            success: true,
-            user,
-        });
+        res.status(200).json(user);
     } catch (error) {
         res.status(500).json({
             success: false,
@@ -27,6 +22,4 @@ async function getUserById(req, res) {
 
 
 
-module.exports = {
-    getUserById
-};
+module.exports = { getUserById };

@@ -83,7 +83,6 @@ export default function Auth() {
                 } else {
                     // Store the token in localStorage
                     localStorage.setItem('token', data.token);
-                    localStorage.setItem('userId',data.data._id); // store userId
 
                     await fetchUser(); // Fetch user data after login
                     navigate('/hunter');

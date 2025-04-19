@@ -1,7 +1,7 @@
 import { useState } from "react";
 import task from "../Assets/task.png";
 
-function DailyTask() {
+function DailyTask({ quest }) {
     const exercises = ["Push-ups", "Squats", "Plank", "Jumping Jacks", "Lunges"];
     const [isOpen, setIsOpen] = useState(false);
     const [currentExercise, setCurrentExercise] = useState("");

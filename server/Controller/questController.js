@@ -26,10 +26,7 @@ async function createQuest(req, res){
             const diffInHours = Math.abs(now - questDate) / 36e5;
 
             if (diffInHours < 24) {
-                return res.status(200).json({
-                    msg: "Returning existing quest within 24h",
-                    quest: quest
-                });
+                return res.status(200).json(quest);
             }
         }
 

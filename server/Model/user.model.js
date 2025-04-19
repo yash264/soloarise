@@ -38,6 +38,7 @@ const userSchema = new mongoose.Schema({
     },
     quest: {
         type: mongoose.Schema.Types.ObjectId,
+        default: null,
         ref: 'questModel'
     }
 }, { timestamps: true });

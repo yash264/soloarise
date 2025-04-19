@@ -11,7 +11,7 @@ function Navbar() {
     useEffect(() => {
         const fetchUserData = async () => {
             try {
-                const res = await axios.get("/api/user", {
+                const res = await axios.get("http://localhost:4000/api/user", {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("token")}`,
                     },

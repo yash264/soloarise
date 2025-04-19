@@ -2,10 +2,11 @@ const express = require('express');
 const app = express();
 const { getUserById } = require('../Controller/userController');
 const { protect } = require('../Middleware/authMiddleware');
-const router = express.Router();
-app.use('/api/user', router);
+
+const userRouter = express.Router();
  
-router.get('/:id', protect,getUserById); // Get user by ID
+userRouter.route('/')
+.get(protect, getUserById);
 
 
-module.exports = router;
+module.exports = userRouter;
