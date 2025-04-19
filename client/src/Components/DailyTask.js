@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import task from "../Assets/task.png";
 
 function DailyTask({ quest }) {
     const [exercises, setExercises] = useState([]);
     const [isOpen, setIsOpen] = useState(false);
+    const navigate = useNavigate();
+
 
     useEffect(() => {
         if (quest?.exercises && Array.isArray(quest.exercises)) {
@@ -55,6 +58,7 @@ function DailyTask({ quest }) {
                                             <span>{formatType(exercise?.type || "Unknown")} [{exercise.value}]</span>
                                             <button
                                                 className="text-sm bg-cyan-600 hover:bg-cyan-500 text-white px-3 py-1 rounded"
+                                                onClick={() => navigate("/quests", { state: { exercise } })}
                                             >
                                                 Start
                                             </button>

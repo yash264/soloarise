@@ -1,6 +1,28 @@
+import BicepCurlCounter from "../Fitness/BicepCurlCounter";
+import PlankHoldTimer from "../Fitness/PlankHoldCounter";
 import PushupCounter from "../Fitness/PushupCounter";
+import SquatCounter from "../Fitness/SquatCounter";
 
-function Banner() {
+function Banner({ exercise }) {
+    const formatType = (type) => {
+        const formattedTypes = {
+            pushUps: "Push Ups",
+            squat: "Squats",
+            planks: "Planks",
+            bicepsCurl: "Biceps Curl",
+            running: "Running"
+        };
+        return formattedTypes[type] || type;
+    };
+
+    const counterComponents = {
+        pushUp: PushupCounter,
+        bicepsCurl: BicepCurlCounter,
+        planks: PlankHoldTimer,
+        squat: SquatCounter
+    };
+    const SelectedCounter = counterComponents[exercise.type];
+
     return (
         <>
             <section>
@@ -15,12 +37,12 @@ function Banner() {
                                     </h2>
 
                                     <p className="mt-4 text-sm text-gray-400">
-                                        Challenge accepted: conquering push ups.
+                                        Challenge accepted: {exercise.tips}
                                     </p>
 
                                     <div>
-                                        <p className="font-medium text-cyan-200">Push Ups</p>
-                                        <p className="text-medium text-gray-400">15 Times</p>
+                                        <p className="font-medium text-cyan-200">{formatType(exercise.type)}</p>
+                                        <p className="text-medium text-gray-400">{exercise.value}</p>
                                     </div>
 
                                 </div>
@@ -29,8 +51,12 @@ function Banner() {
                         </div>
 
                         <div className="md:col-span-3 flex justify-center">
-                            <PushupCounter />
-                        </div>
+                        {SelectedCounter ? (
+                            <SelectedCounter exercise={exercise} />
+                        ) : (
+                            <p className="text-gray-400">No counter available for this exercise.</p>
+                        )}
+                    </div>
                     </div>
                 </div>
             </section>

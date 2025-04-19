@@ -1,15 +1,19 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
-const PushupCounter = () => {
+const PushupCounter = ({ exercise }) => {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const [poseLandmarker, setPoseLandmarker] = useState(null);
-  const pushupCount = useRef(0);
+  const exerciseValue = parseFloat(exercise.done);
+  const pushupCount = useRef(exerciseValue);
   const form = useRef(0);
   const feedback = useRef("Fix Form");
   const lastVideoTime = useRef(-1);
   const direction = useRef(0);
   const [mode, setMode] = useState("webcam");
+  const navigate = useNavigate();
 
   const calculateAngle = (a, b, c) => {
     const radians =
@@ -189,6 +193,34 @@ const PushupCounter = () => {
     detectFrame();
   };
 
+  const handleStop = () => {
+
+      exercise.done = pushupCount.current;
+
+      const updateQuest = async () => {
+        try {
+            const token = localStorage.getItem("token");
+
+            const response = await axios.patch(
+              "http://localhost:4000/api/quest",
+              { exercise },
+              {
+                headers: {
+                  Authorization: `Bearer ${token}`,
+                  "Content-Type": "application/json",
+                },
+              }
+           );
+            
+           navigate("/hunter");
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
+    updateQuest();
+  }
+
 
   return (
     <div className="flex mt-12 justify-center items-center w-full py-8 px-4">
@@ -207,6 +239,12 @@ const PushupCounter = () => {
           className="absolute top-0 left-0 w-full h-full"
         />
       </div>
+      <button
+        onClick={handleStop}
+        className="mt-6 px-6 py-2 rounded-lg bg-red-600 hover:bg-red-500 text-white font-semibold shadow-md"
+      >
+        Stop
+      </button>
     </div>
   );
 };

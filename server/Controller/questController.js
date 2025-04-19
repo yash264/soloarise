@@ -93,47 +93,59 @@ async function getQuest(req, res) {
     }
 }
 
-async function updateQuest(req, res){
-    try{
-        const { date, exercises } = req.body;
-        const allDone = exercises.every(ex => {
-            const value = parseFloat(ex.value);
-            const done = parseFloat(ex.done);
-            return !isNaN(value) && !isNaN(done) && done >= value;
-        });
 
-        const updatedExercises = exercises.map(ex => {
-            const value = parseFloat(ex.value);
-            const done = parseFloat(ex.done);
-            const isCompleted = !isNaN(value) && !isNaN(done) && done >= value;
-            return {
-                ...ex,
-                completed: isCompleted
-            };
-        });
-        const allCompleted = updatedExercises.every(ex => ex.completed);
-        const updatedQuest = await questModel.findOneAndUpdate(
-            { date: date },
-            {
-                exercises: updatedExercises,
-                completed: allCompleted
-            },
-            { upsert: true, new: true }
-        );
-
-        return res.status(200).json({
-            success: true,
-            message: 'Quest updated successfully',
-            data: updatedQuest
-        });
+const xpByExercise = {
+    pushUps: 10,
+    squat: 8,
+    planks: 12,
+    bicepsCurl: 9,
+    running: 15
+  };
+  
+async function updateQuest(req, res) {
+    try {
+      const { exercise } = req.body;
+      const user = req.user;
+      const value = parseFloat(exercise.value);
+      const done = parseFloat(exercise.done);
+      const isCompleted = !isNaN(value) && !isNaN(done) && done >= value;
+  
+      const updatedExercise = {
+        ...exercise,
+        completed: isCompleted
+      };
+      
+      const questId = user.quest;
+      let quest = await questModel.findById( questId );
+  
+        const existingExercises = quest.exercises || [];
+        const index = existingExercises.findIndex(ex => ex.name === exercise.name);
+  
+        if (index !== -1) {
+          existingExercises[index] = updatedExercise;
+        } else {
+          existingExercises.push(updatedExercise);
+        }
+  
+        const allCompleted = existingExercises.every(ex => ex.completed);
+  
+        quest.exercises = existingExercises;
+        quest.completed = allCompleted;
+        await quest.save();
+  
+      return res.status(200).json({
+        success: true,
+        message: 'Quest updated successfully',
+        data: quest
+      });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({
+        msg: "" + error
+      });
     }
-    catch(error){
-        console.log(error);
-        res.status(500).json({
-            msg: ""+error
-        })
-    }
-}
+  }
+  
 
 
 module.exports = { createQuest, getQuest, updateQuest };
