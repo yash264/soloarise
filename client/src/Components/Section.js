@@ -5,7 +5,7 @@ import Card2 from "./Card2";
 import axios from "axios";
 
 function Section() {
-    const [quest, setQuest] = useState(null); // null initially
+    const [quest, setQuest] = useState(null); 
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
 
