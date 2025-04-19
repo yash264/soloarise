@@ -1,11 +1,22 @@
-function Cards() {
-    const exercises = [
-        { name: "Push-ups", info: "x20 reps" },
-        { name: "Squats", info: "x25 reps" },
-        { name: "Plank", info: "60 sec" },
-        { name: "Jumping Jacks", info: "x30 reps" },
-        { name: "Lunges", info: "x20 reps each leg" },
-    ];
+import { useState, useEffect } from "react";
+
+function Card2({ exercises }) {
+    const [exercisesState, setExercises] = useState([]);
+
+    useEffect(() => {
+        setExercises(exercises);
+    }, [exercises]);
+
+    const formatType = (type) => {
+        const formattedTypes = {
+            pushUps: "Push Ups",
+            squat: "Squats",
+            planks: "Planks",
+            bicepsCurl: "Biceps Curl",
+            running: "Running"
+        };
+        return formattedTypes[type] || type;
+    };
 
     // Extract numeric value from info string
     const extractCount = (info) => {
@@ -21,33 +32,35 @@ function Cards() {
         }
     };
 
-    const totalCount = exercises.reduce((sum, exercise) => sum + extractCount(exercise.info), 0);
+    const totalCount = exercisesState.filter(e => e.completed).length;
 
     return (
         <div className="grid w-full">
             <div className="col-span-1 rounded-lg bg-gradient-to-r from-[#0f0f1a] via-[#141421] to-[#0f0f1a] p-6 shadow-lg text-white">
-                {/* <h3 className="text-xl font-semibold text-center mb-6 text-cyan-300 tracking-wider drop-shadow">
-                    Daily Exercise List
-                </h3> */}
-
                 <div className="space-y-4">
-                    {exercises.map((exercise, index) => (
+                    {exercisesState.map((exercise, index) => (
                         <div
                             key={index}
                             className="flex items-center justify-between bg-[#1e1e2e] p-3 rounded-lg shadow hover:shadow-cyan-500/30 transition"
                         >
                             <div>
-                                <p className="font-medium text-cyan-200">{exercise.name}</p>
-                                <p className="text-xs text-gray-400">{exercise.info}</p>
+                                <p className="font-medium text-cyan-200">{formatType(exercise.type)}</p>
+                                {/* <p className="text-xs text-gray-400">{exercise.practise}</p>
+                                <p className="text-xs text-gray-400">{exercise.tips}</p> */}
+                                {/* <p className="text-xs text-gray-400">Reps/Value: {exercise.value}</p> */}
+                                <p className="text-xs text-gray-400">[{exercise.done} / {exercise.value}]</p>
                             </div>
                         </div>
                     ))}
                 </div>
 
-               
+                {/* Total Reps or Time */}
+                <div className="mt-4 text-cyan-300">
+                    <p>Total Completed: {totalCount}</p>
+                </div>
             </div>
         </div>
     );
 }
 
-export default Cards;
+export default Card2;

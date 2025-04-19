@@ -1,9 +1,33 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import avatar from "../Assets/avatar.png";
+import axios from "axios";
 
 function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [level, setLevel] = useState(0);
+    const [xp, setXp] = useState(0);
+    const xpRequired = 1000;
+    useEffect(() => {
+        const fetchUserData = async () => {
+            try {
+                const res = await axios.get("/api/user", {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem("token")}`,
+                    },
+                });
+                const user = res.data;
+                setLevel(user.points);
+                setXp(user.level);
+            } catch (error) {
+                console.error("Error fetching user data:", error);
+            }
+        };
+
+        fetchUserData();
+    }, []);
+    
+
 
     return (
         <>
@@ -43,15 +67,15 @@ function Navbar() {
                                 <div className="flex-1 h-4 bg-gray-700 rounded-full overflow-hidden relative w-48">
                                     <div
                                         className="h-full bg-gradient-to-r from-cyan-400 to-blue-500"
-                                        style={{ width: "65%" }} // Example: 65% XP filled
+                                        style={{ width: `${(xp / xpRequired) * 100}%` }} // Example: 65% XP filled
                                     ></div>
                                     <span className="absolute inset-0 flex justify-center text-xs text-white font-semibold">
-                                        650 / 1000 XP
+                                        {xp} XP
                                     </span>
                                 </div>
                                 {/* Level Display */}
                                 <div className="text-cyan-300 font-bold text-lg">
-                                    Level: 50
+                                    Level: {level}
                                 </div>
 
                             </div>

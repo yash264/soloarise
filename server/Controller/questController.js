@@ -102,11 +102,21 @@ async function updateQuest(req, res){
             return !isNaN(value) && !isNaN(done) && done >= value;
         });
 
+        const updatedExercises = exercises.map(ex => {
+            const value = parseFloat(ex.value);
+            const done = parseFloat(ex.done);
+            const isCompleted = !isNaN(value) && !isNaN(done) && done >= value;
+            return {
+                ...ex,
+                completed: isCompleted
+            };
+        });
+        const allCompleted = updatedExercises.every(ex => ex.completed);
         const updatedQuest = await questModel.findOneAndUpdate(
             { date: date },
             {
-                exercises,
-                completed: allDone
+                exercises: updatedExercises,
+                completed: allCompleted
             },
             { upsert: true, new: true }
         );

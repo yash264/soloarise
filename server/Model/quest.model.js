@@ -27,6 +27,10 @@ const questSchema = new mongoose.Schema({
             tips: {
                 type: String,
                 required: true
+            },
+            completed: {
+                type: Boolean,
+                default: false
             }
         }
     ],
