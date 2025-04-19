@@ -81,8 +81,10 @@ async function getQuest(req, res) {
         const user = await userModel.findById(req.user._id).populate('quest');
 
         if (!user || !user.quest) {
+            console.log("nonotnotnnto");
             return res.status(404).json({ message: "Quest not found" });
         }
+        console.log(user.quest);
 
         res.status(200).json(user.quest);
     } catch (error) {
@@ -102,11 +104,21 @@ async function updateQuest(req, res){
             return !isNaN(value) && !isNaN(done) && done >= value;
         });
 
+        const updatedExercises = exercises.map(ex => {
+            const value = parseFloat(ex.value);
+            const done = parseFloat(ex.done);
+            const isCompleted = !isNaN(value) && !isNaN(done) && done >= value;
+            return {
+                ...ex,
+                completed: isCompleted
+            };
+        });
+        const allCompleted = updatedExercises.every(ex => ex.completed);
         const updatedQuest = await questModel.findOneAndUpdate(
             { date: date },
             {
-                exercises,
-                completed: allDone
+                exercises: updatedExercises,
+                completed: allCompleted
             },
             { upsert: true, new: true }
         );
