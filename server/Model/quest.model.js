@@ -9,11 +9,19 @@ const questSchema = new mongoose.Schema({
         {
             type: {
                 type: String,
-                enum: ['pushup', 'squat', 'plank', 'bicep curl', 'running'],
+                enum: ['pushUps', 'squat', 'planks', 'bicepsCurl', 'running'],
                 required: true,
             },
             value: {
-                type: Number,
+                type: String,
+                required: true
+            },
+            practise: {
+                type: String,
+                required: true,
+            },
+            tips: {
+                type: String,
                 required: true
             }
         }

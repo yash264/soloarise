@@ -32,7 +32,6 @@ def classify_level(prediction):
 def predict():
     try:
         data = request.get_json()
-        print(data)
 
         previous_level = int(data.get('previous_level'))
         points = int(data.get('points'))
@@ -43,7 +42,6 @@ def predict():
 
         # Get recommendation
         recommendation = recommend_tasks(level)
-        print(recommendation)
 
         return jsonify({
             'prediction': str(level),
