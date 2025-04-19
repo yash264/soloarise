@@ -3,7 +3,7 @@ const userModel = require('../Model/user.model');
 // Get user by ID
 async function getUserById(req, res) {
     try {
-        const userId = req.user; // Get userId from request parameters
+        const userId = req.user._id // Get userId from request parameters
         const user = await userModel.findById(userId).select('-password'); // Exclude the password field
 
         if (!user) {
