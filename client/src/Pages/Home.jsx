@@ -21,7 +21,7 @@ const Home = () => {
                     },
                 });
                 
-                setQuest(response.data);
+                setQuest(response.data.quest);
             } catch (err) {
                 console.log(err);
                 if (err.response && err.response.status === 404) {

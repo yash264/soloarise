@@ -8,10 +8,11 @@ function Navbar() {
     const [level, setLevel] = useState(0);
     const [xp, setXp] = useState(0);
     const xpRequired = 1000;
+
     useEffect(() => {
         const fetchUserData = async () => {
             try {
-                const res = await axios.get("http://localhost:4000/api/user", {
+                const res = await axios.get("http://localhost:4000/api/user/", {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("token")}`,
                     },
@@ -46,9 +47,9 @@ function Navbar() {
                                 <li>
                                     <Link to="/hunter/ascension" className="text-white transition duration-300 hover:text-cyan-400 hover:shadow-[0_0_12px_#22d3ee] hover:scale-105 p-2" href="#">Level</Link>
                                 </li>
-                                <li>
-                                    <Link className="text-white transition duration-300 hover:text-cyan-400 hover:shadow-[0_0_12px_#22d3ee] hover:scale-105 p-2" to="../quests" >Daily Quest</Link>
-                                </li>
+                                {/* <li> */}
+                                    {/* <Link className="text-white transition duration-300 hover:text-cyan-400 hover:shadow-[0_0_12px_#22d3ee] hover:scale-105 p-2" to="../quests" >Daily Quest</Link> */}
+                                {/* </li> */}
                                 <li>
                                     <Link className="text-white transition duration-300 hover:text-cyan-400 hover:shadow-[0_0_12px_#22d3ee] hover:scale-105 p-2" to="../ranking" >Ranking</Link>
                                 </li>
