@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import avatar from "../Assets/avatar.png";
+import { Link } from "react-router-dom";
 
 function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     return (
         <>
-            <header className="bg-gradient-to-r from-[#10101724] via-[#14142166] to-[#0f0f1a65] sticky top-0 w-full z-50 shadow-[0_10px_30px_rgba(0,0,0,0.9)]">
+            <header className="bg-gradient-to-r from-[#10101724] via-[#14142166] to-[#0f0f1a65] sticky top-0 w-full z-50 shadow-[0_10px_30px_rgba(0,0,0,0.9)]" style={{position:"absolute"}}>
                 <div className="mx-auto flex h-16 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8">
                     <a className="block" href="#">
                         <a href="#" className="logo-text">SoloArise</a>
@@ -17,6 +18,13 @@ function Navbar() {
                         <nav aria-label="Global" className="hidden md:block">
                             <ul className="flex items-center gap-8 text-sm font-semibold tracking-wide">
                                 <li>
+
+                                    <Link to="/" className="text-white transition duration-300 hover:text-cyan-400 hover:shadow-[0_0_12px_#22d3ee] hover:scale-105 p-2" href="#">Ranking</Link>
+                                </li>
+                                <li>
+                                    <Link to="/hunter/ascension" className="text-white transition duration-300 hover:text-cyan-400 hover:shadow-[0_0_12px_#22d3ee] hover:scale-105 p-2" href="#">Level</Link>
+                                </li>
+                                 <li>
                                     <Link className="text-white transition duration-300 hover:text-cyan-400 hover:shadow-[0_0_12px_#22d3ee] hover:scale-105 p-2" to="../hunter" >Hunter</Link>
                                 </li>
                                 <li>
@@ -28,6 +36,7 @@ function Navbar() {
                                 <li>
                                     <Link className="text-white transition duration-300 hover:text-cyan-400 hover:shadow-[0_0_12px_#22d3ee] hover:scale-105 p-2" to="../profile" >Profile</Link>
                                 </li>
+
                             </ul>
                         </nav>
 
@@ -47,7 +56,7 @@ function Navbar() {
                                 </div>
                                 {/* Level Display */}
                                 <div className="text-cyan-300 font-bold text-lg">
-                                    Level: 5
+                                    Level: 50
                                 </div>
 
                             </div>
