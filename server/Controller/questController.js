@@ -59,7 +59,7 @@ async function createQuest(req, res) {
         await newQuest.save();
 
         user.quest = newQuest._id;
-        await userModel.update(
+        await userModel.findByIdAndUpdate(
             user._id,
             { quest: newQuest._id },
             { new: true }
