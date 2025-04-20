@@ -13,6 +13,9 @@ Creating a gamified fitness application that uses motivational systems and ML-ba
   
 ## Presentation Link:
   <a href="https://drive.google.com/file/d/1D64OiuwASSB_pZf_1dhpXtvJOdOZ4bSZ/view?usp=sharing">[https://drive.google.com/file/d/1D64OiuwASSB_pZf_1dhpXtvJOdOZ4bSZ/view?usp=sharing)</a>
+
+## Live Link
+https://soloarise-meta.vercel.app
   
   
 ## Table of Contents:
