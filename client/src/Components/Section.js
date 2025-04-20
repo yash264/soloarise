@@ -14,7 +14,7 @@ function Section() {
             try {
                 const token = localStorage.getItem("token");
     
-                const response = await axios.get("http://localhost:4000/api/quest", {
+                const response = await axios.get("https://soloariseserver.onrender.com/api/quest", {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
