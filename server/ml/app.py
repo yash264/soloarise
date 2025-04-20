@@ -8,6 +8,17 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 
+# set the cors value
+cors_options = {
+    "origins": "https://soloariseserver.onrender.com",
+    "methods": ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD"],
+    "allow_headers": ["Content-Type", "Authorization"],
+    "supports_credentials": True
+}
+
+
+# Apply CORS to the app with specific options
+CORS(app, resources={r"/*": cors_options})
 
 # Load model and label encoder
 model = joblib.load('models/difficulty_predictor.pkl')
