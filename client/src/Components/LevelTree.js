@@ -1,6 +1,7 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "tailwindcss/tailwind.css";
 import Navbar from "./Navbar";
+import axios from "axios";
 
 const levels = Array.from({ length: 101 }, (_, i) => i);
 
