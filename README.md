@@ -9,10 +9,10 @@
 Creating a gamified fitness application that uses motivational systems and ML-based activity verification to promote consistent healthy habits. 
   
 ## Demo Video Link:
-  <a href="https://youtu.be/dQw4w9WgXcQ">https://youtu.be/dQw4w9WgXcQ</a>
+  <a href="https://drive.google.com/file/d/1G_-T0nHKNVgls5wKwUAD1jJKm5q6dULh/view?usp=drive_link">[https://drive.google.com/file/d/1G_-T0nHKNVgls5wKwUAD1jJKm5q6dULh/view?usp=drive_link)</a>
   
 ## Presentation Link:
-  <a href="https://bit.ly/hack36_24_ppt"> PPT link here </a>
+  <a href="https://drive.google.com/file/d/1D64OiuwASSB_pZf_1dhpXtvJOdOZ4bSZ/view?usp=sharing">[https://drive.google.com/file/d/1D64OiuwASSB_pZf_1dhpXtvJOdOZ4bSZ/view?usp=sharing)</a>
   
   
 ## Table of Contents:
