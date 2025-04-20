@@ -17,7 +17,7 @@ export const UserProvider = ({ children }) => {
 
         if (token) {
             try {
-                const response = await fetch(`http://localhost:4000/api/user/getData`, {
+                const response = await fetch(`https://soloariseserver.onrender.com/api/user/getData`, {
                     method: "GET",
                     headers: {
                         Authorization: `Bearer ${token}`, // Include token in headers
@@ -55,7 +55,7 @@ export const UserProvider = ({ children }) => {
 
         if (token) {
             try {
-                const response = await axios.post(`http://localhost:4000/api/user/update`,
+                const response = await axios.post(`https://soloariseserver.onrender.com/api/user/update`,
                     {
                         name: name,
                         email: email,

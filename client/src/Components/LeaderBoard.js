@@ -19,7 +19,7 @@ function LeaderBoard() {
                 setLoading(true);
                 const offset = (currentPage - 1) * usersPerPage;
                 const res = await fetch(
-                    `http://localhost:4000/api/user/leaderboard?offset=${offset}&limit=${usersPerPage}`,
+                    `https://soloariseserver.onrender.com/api/user/leaderboard?offset=${offset}&limit=${usersPerPage}`,
                     {
                         headers: {
                             Authorization: `Bearer ${token}`,

@@ -7,8 +7,13 @@ const app=express();
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }));
 
+const corsOptions ={
+    origin: "https://soloarise-meta.vercel.app",
+    methods: "GET, POST, PUT, DELETE, PATCH, HEAD",
+    credentials: true,
+}; 
 
-app.use(cors());
+app.use(cors(corsOptions));
 
 const port = process.env.port || 4000;
 const server = app.listen(port,()=>{
@@ -29,3 +34,10 @@ app.get('/healthcheck', (req, res) => {
     console.log('I am alive!!!');
     res.status(200).send('Backend is alive!!!');
 });
+
+// to start the server for production
+app.get('/startServer', (req, res) => {
+    res.status(200).send("Started the Server");
+});
+
+

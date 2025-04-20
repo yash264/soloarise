@@ -164,7 +164,7 @@ const BicepCurlCounter = ({ exercise }) => {
         const token = localStorage.getItem("token");
 
         const response = await axios.patch(
-          "http://localhost:4000/api/quest",
+          "https://soloariseserver.onrender.com/api/quest",
           { exercise },
           {
             headers: {

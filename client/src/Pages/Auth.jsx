@@ -41,8 +41,8 @@ export default function Auth() {
         }
 
         const url = login
-            ? 'http://localhost:4000/api/auth/login'
-            : 'http://localhost:4000/api/auth/register';
+            ? 'https://soloariseserver.onrender.com/api/auth/login'
+            : 'https://soloariseserver.onrender.com/api/auth/register';
 
         const payload = login
             ? { email: formData.email, password: formData.password }
