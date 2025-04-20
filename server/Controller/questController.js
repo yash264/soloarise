@@ -5,7 +5,11 @@ const userModel = require('../Model/user.model');
 
 const fetch_data = async (body) => {
     try {
-        const response = await axios.post("https://soloarise.onrender.com/predict", body);
+        const response = await axios.post("https://soloarise.onrender.com/predict", body,
+            {
+                withCredentials: true
+            }
+        );
 
         return response.data
 
