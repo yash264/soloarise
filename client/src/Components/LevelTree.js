@@ -14,6 +14,7 @@ const getGlowColor = (level, currentLevel) => {
     return "from-red-500 to-red-700 ring-red-300 glow-red";  // Locked levels
 };
 
+
 const LevelTree = ({ currentLevel = 50 }) => {
     const levelRefs = useRef([]);
 
@@ -26,6 +27,7 @@ const LevelTree = ({ currentLevel = 50 }) => {
             });
         }
     }, [currentLevel]);
+
 
     return (
         <>

@@ -5,7 +5,7 @@ const userModel = require('../Model/user.model');
 
 const fetch_data = async (body) => {
     try {
-        const response = await axios.post("http://127.0.0.1:5000/predict", body);
+        const response = await axios.post("https://soloarise.onrender.com/predict", body);
 
         return response.data
 
