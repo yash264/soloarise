@@ -9,12 +9,12 @@ performance_DB = {
             "exercise": "Do 3 sets of 10 squats",
             "tips": "Keep your chest up and back straight",
         },
-        { 
-            "type": "running", 
-            "value": 1500,
-            "exercise": "Run for 10 minutes without stopping",
-            "tips": "Focus on breathing: in through the nose, out through the mouth",
-        },
+        # { 
+        #     "type": "running", 
+        #     "value": 1500,
+        #     "exercise": "Run for 10 minutes without stopping",
+        #     "tips": "Focus on breathing: in through the nose, out through the mouth",
+        # },
         { 
             "type": "pushUps", 
             "value": 15,
@@ -41,12 +41,12 @@ performance_DB = {
             "exercise": "4 sets of 20 squats (bodyweight or goblet-style). Try jump squats: 3 sets of 10 reps",
             "tips": "Push through heels as you come up"
         },
-        {
-            "type": "running",
-            "value": 3000,
-            "exercise": "Run 2–3 km non-stop at a steady pace. Try interval training: 1 min sprint, 1 min jog (6 rounds)",
-            "tips": "Incorporate breathing rhythm: 2 steps inhale, 2 steps exhale"
-        },
+        # {
+        #     "type": "running",
+        #     "value": 3000,
+        #     "exercise": "Run 2–3 km non-stop at a steady pace. Try interval training: 1 min sprint, 1 min jog (6 rounds)",
+        #     "tips": "Incorporate breathing rhythm: 2 steps inhale, 2 steps exhale"
+        # },
         {
             "type": "pushUps",
             "value": 50,
@@ -73,12 +73,12 @@ performance_DB = {
             "exercise": "5 sets of 20 weighted squats (use dumbbells/barbell/backpack). 4 sets of jump squats to failure (max reps). 3 rounds of squat + hold (15 squats + 20s hold)",
             "tips": "Go below parallel (ass-to-grass depth if form allows). Keep chest up, spine neutral even with weight"
         },
-        {
-            "type": "running",
-            "value": 6500,
-            "exercise": "Run 5–7 km at strong pace. Sprint intervals: 45 sec sprint, 1 min jog (10 rounds). Fartlek run: 30 min alternating between fast and slow paces",
-            "tips": "Mix in elevation/hill sprints for added intensity. Track heart rate to stay in performance zone (e.g., 80–90% max)"
-        },
+        # {
+        #     "type": "running",
+        #     "value": 6500,
+        #     "exercise": "Run 5–7 km at strong pace. Sprint intervals: 45 sec sprint, 1 min jog (10 rounds). Fartlek run: 30 min alternating between fast and slow paces",
+        #     "tips": "Mix in elevation/hill sprints for added intensity. Track heart rate to stay in performance zone (e.g., 80–90% max)"
+        # },
         {
             "type": "pushUps",
             "value": 100,

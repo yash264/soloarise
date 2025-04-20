@@ -19,8 +19,8 @@ function Navbar() {
                     },
                 });
                 const user = res.data;
-                setLevel(user.points);
-                setXp(user.level);
+                setLevel(user.level);
+                setXp(user.points);
             } catch (error) {
                 console.error("Error fetching user data:", error);
             }

@@ -37,8 +37,7 @@ const questSchema = new mongoose.Schema({
     completed: {
         type: Boolean,
         default: false
-    }
-
+    },
 },{
     timestamps:true
 })

@@ -211,8 +211,9 @@ const PushupCounter = ({ exercise }) => {
                 },
               }
            );
+           console.log(response.data);
             
-           navigate("/hunter");
+           //navigate("/hunter");
         } catch (err) {
             console.log(err);
         }
