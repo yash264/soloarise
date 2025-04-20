@@ -161,27 +161,34 @@ const BicepCurlCounter = ({ exercise }) => {
 
     const updateQuest = async () => {
       try {
-          const token = localStorage.getItem("token");
+        const token = localStorage.getItem("token");
 
-          const response = await axios.patch(
-            "http://localhost:4000/api/quest",
-            { exercise },
-            {
-              headers: {
-                Authorization: `Bearer ${token}`,
-                "Content-Type": "application/json",
-              },
-            }
-         );
-          
-         navigate("/hunter");
+        const response = await axios.patch(
+          "http://localhost:4000/api/quest",
+          { exercise },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (response.data.message == "Complete your task") {
+          alert("Please, Complete your task !!")
+        }
+        else if (response.data.message == "Quest updated successfully") {
+          alert("Task Completed Successfully !!")
+          navigate("/hunter");
+        }
+
       } catch (err) {
-          console.log(err);
+        console.log(err);
       }
-  };
+    };
 
-  updateQuest();
-}
+    updateQuest();
+  }
 
   return (
     <div style={{ position: "relative", width: 640, height: 480 }}>

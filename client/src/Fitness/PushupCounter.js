@@ -195,28 +195,32 @@ const PushupCounter = ({ exercise }) => {
 
   const handleStop = () => {
 
-      exercise.done = pushupCount.current;
+    exercise.done = pushupCount.current;
 
-      const updateQuest = async () => {
-        try {
-            const token = localStorage.getItem("token");
+    const updateQuest = async () => {
+      try {
+        const token = localStorage.getItem("token");
 
-            const response = await axios.patch(
-              "http://localhost:4000/api/quest",
-              { exercise },
-              {
-                headers: {
-                  Authorization: `Bearer ${token}`,
-                  "Content-Type": "application/json",
-                },
-              }
-           );
-           console.log(response.data);
-            
-           //navigate("/hunter");
-        } catch (err) {
-            console.log(err);
+        const response = await axios.patch(
+          "http://localhost:4000/api/quest",
+          { exercise },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        if (response.data.message == "Complete your task") {
+          alert("Please, Complete your task !!")
         }
+        else if (response.data.message == "Quest updated successfully") {
+          alert("Task Completed Successfully !!")
+          navigate("/hunter");
+        }
+      } catch (err) {
+        console.log(err);
+      }
     };
 
     updateQuest();

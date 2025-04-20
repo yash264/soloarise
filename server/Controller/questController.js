@@ -149,7 +149,6 @@ const xpByExercise = {
 async function updateQuest(req, res) {
     try {
         const { exercise } = req.body;
-        console.log(exercise);
         const user = req.user;
         const value = parseFloat(exercise.value);
         const done = parseFloat(exercise.done);
