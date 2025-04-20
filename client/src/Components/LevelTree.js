@@ -15,7 +15,8 @@ const getGlowColor = (level, currentLevel) => {
 };
 
 
-const LevelTree = ({ currentLevel = 50 }) => {
+const LevelTree = () => {
+    const [currentLevel, setCurrentLevel] = useState(0);
     const levelRefs = useRef([]);
 
     // Scroll to the current level on mount
@@ -26,6 +27,24 @@ const LevelTree = ({ currentLevel = 50 }) => {
                 block: "center",
             });
         }
+    }, [currentLevel]);
+
+    useEffect(() => {
+        const fetchUserData = async () => {
+            try {
+                const res = await axios.get("https://soloariseserver.onrender.com/api/user/", {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem("token")}`,
+                    },
+                });
+                const user = res.data;
+                setCurrentLevel(user.level);
+            } catch (error) {
+                console.error("Error fetching user data:", error);
+            }
+        };
+
+        fetchUserData();
     }, [currentLevel]);
 
 
