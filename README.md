@@ -1,4 +1,4 @@
-<h1 align="center">Soloarise</h1>
+<h1 align="center">SoloArise</h1>
 <p align="center">
 </p>
 
