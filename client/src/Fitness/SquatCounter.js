@@ -147,23 +147,33 @@ const SquatCounter = ({ exercise }) => {
   }
 
   return (
-    <div style={{ position: "relative", width: 640, height: 480 }}>
-      <video
-        ref={videoRef}
-        style={{ width: "100%", height: "100%", objectFit: "cover" }}
-      />
-      <canvas
-        ref={canvasRef}
-        style={{ position: "absolute", top: 0, left: 0 }}
-      />
-      <div style={{ marginTop: 10, fontSize: 24 }}>Total Squats: {squatCountDisplay}</div>
+    <div className="w-full max-w-3xl mx-auto">
+      <div className="relative aspect-video">
+        <video
+          ref={videoRef}
+          className="w-full h-full object-cover"
+          autoPlay
+          muted
+          playsInline
+        />
+        <canvas
+          ref={canvasRef}
+          className="absolute top-0 left-0 w-full h-full"
+        />
+      </div>
+
+      <div className="mt-4 text-xl font-semibold text-center">
+        Total Squats: {squatCountDisplay}
+      </div>
+
       <button
         onClick={handleStop}
-        className="mt-6 px-6 py-2 rounded-lg bg-red-600 hover:bg-red-500 text-white font-semibold shadow-md"
+        className="mt-4 px-6 py-2 rounded-lg bg-red-600 hover:bg-red-500 text-white font-semibold shadow-md block mx-auto"
       >
         Stop
       </button>
     </div>
+
   );
 };
 

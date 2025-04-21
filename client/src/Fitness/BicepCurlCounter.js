@@ -191,24 +191,26 @@ const BicepCurlCounter = ({ exercise }) => {
   }
 
   return (
-    <div style={{ position: "relative", width: 640, height: 480 }}>
+    <div className="relative w-full max-w-3xl aspect-video mx-auto">
       <video
         ref={videoRef}
-        style={{ width: "100%", height: "100%", objectFit: "cover" }}
+        className="w-full h-full object-cover"
         playsInline
         muted
+        autoPlay
       />
       <canvas
         ref={canvasRef}
-        style={{ position: "absolute", top: 0, left: 0 }}
+        className="absolute top-0 left-0 w-full h-full"
       />
       <button
         onClick={handleStop}
-        className="mt-6 px-6 py-2 rounded-lg bg-red-600 hover:bg-red-500 text-white font-semibold shadow-md"
+        className="absolute bottom-4 left-1/2 transform -translate-x-1/2 px-6 py-2 rounded-lg bg-red-600 hover:bg-red-500 text-white font-semibold shadow-md"
       >
         Stop
       </button>
     </div>
+
   );
 };
 

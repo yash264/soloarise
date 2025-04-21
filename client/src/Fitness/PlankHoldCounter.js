@@ -166,7 +166,7 @@ const PlankHoldTimer = ({ exercise }) => {
           alert("Task Completed Successfully !!")
           navigate("/hunter");
         }
-        
+
       } catch (err) {
         console.log(err);
       }
@@ -176,22 +176,26 @@ const PlankHoldTimer = ({ exercise }) => {
   }
 
   return (
-    <div style={{ position: "relative", width: 640, height: 480 }}>
+    <div className="relative w-full max-w-3xl aspect-video mx-auto">
       <video
         ref={videoRef}
-        style={{ width: "100%", height: "100%", objectFit: "cover" }}
+        className="w-full h-full object-cover"
+        autoPlay
+        muted
+        playsInline
       />
       <canvas
         ref={canvasRef}
-        style={{ position: "absolute", top: 0, left: 0 }}
+        className="absolute top-0 left-0 w-full h-full"
       />
       <button
         onClick={handleStop}
-        className="mt-6 px-6 py-2 rounded-lg bg-red-600 hover:bg-red-500 text-white font-semibold shadow-md"
+        className="mt-4 px-6 py-2 rounded-lg bg-red-600 hover:bg-red-500 text-white font-semibold shadow-md block mx-auto"
       >
         Stop
       </button>
     </div>
+
   );
 };
 
