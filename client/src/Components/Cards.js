@@ -14,7 +14,6 @@ function Cards({ exercises }) {
             squat: "Squats",
             planks: "Planks",
             bicepsCurl: "Biceps Curl",
-            running: "Running"
         };
 
         return formattedTypes[type] || type;

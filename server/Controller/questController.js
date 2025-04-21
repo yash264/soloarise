@@ -50,7 +50,6 @@ async function createQuest(req, res) {
                 {
                     type: response.recommendation[0].type,
                     value: response.recommendation[0].value,
-                    practise: response.recommendation[0].exercise,
                     tips: response.recommendation[0].tips
                 },
             ]
