@@ -41,7 +41,7 @@ const Home = () => {
     return (
         <div className="home-screen">
            <Navbar />
-           <Section />
+           <Section quest = {quest} loading = {loading} error = {error} />
            <DailyTask quest = {quest} />
         </div>
     )
