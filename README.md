@@ -18,9 +18,9 @@ The platform offers personalized fitness challenges, motivation, and performance
 
 ## 🎥 Demo and Presentation
 
-- 🎬 **Demo Video:** [Watch Here](https://drive.google.com/file/d/1G_-T0nHKNVgls5wKwUAD1jJKm5q6dULh/view?usp=drive_link)
-- 📊 **Presentation:** [View Slides](https://drive.google.com/file/d/1D64OiuwASSB_pZf_1dhpXtvJOdOZ4bSZ/view?usp=sharing)
-- 🌐 **Live App:** [https://soloarise-meta.vercel.app](https://soloarise-meta.vercel.app)
+- 🎬 **Demo Video:** https://drive.google.com/file/d/1G_-T0nHKNVgls5wKwUAD1jJKm5q6dULh/view?usp=sharing
+- 📊 **Presentation:** https://drive.google.com/file/d/1D64OiuwASSB_pZf_1dhpXtvJOdOZ4bSZ/view?usp=sharing
+- 🌐 **Live App:** https://soloarise-meta.vercel.app
 
 ---
 
